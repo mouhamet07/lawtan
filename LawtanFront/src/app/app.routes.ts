@@ -15,5 +15,10 @@ export const routes: Routes = [
     path: 'devis',
     loadComponent: () =>
       import('./features/client/devis/devis.component').then((m) => m.DevisComponent)
+  },
+  {
+    path: 'login',
+    loadComponent: () =>
+      import('./features/auth/login/login.component').then((m) => m.LoginComponent)
   }
 ];
