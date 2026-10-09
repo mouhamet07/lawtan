@@ -1,0 +1,104 @@
+<!-- Page de Connexion -->
+<div class="bg-light min-vh-100">
+    <div class="container">
+        <div class="row min-vh-100 align-items-center justify-content-center">
+            <div class="col-md-5 col-lg-4">
+                <!-- Logo et titre -->
+                <div class="text-center mb-4">
+                    <div class="bg-success bg-opacity-10 text-success rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                        <i class="bi bi-hospital fs-1"></i>
+                    </div>
+                    <h3 class="fw-light">Gestion RV Médicaux</h3>
+                    <p class="text-muted">Connectez-vous à votre compte</p>
+                </div>
+
+                <!-- Formulaire de connexion -->
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <form #formCtrl="ngForm" (ngSubmit)="onLogin(formCtrl)" class="login-form">
+                            <!-- Email -->
+                            <div class="mb-3">
+                              <label for="email" class="form-label">
+                                  <i class="bi bi-envelope"></i> Email
+                              </label>
+                              <input type="email"
+                                class="form-control form-control-lg"
+                                placeholder="votre@email.com"
+                                required
+                                [(ngModel)]="userLogin.email"
+                                name="email"
+                                #emailCtrl="ngModel">
+                                @if (isFieldInvalid('email', formCtrl)){
+                                    @if (emailCtrl.errors?.['required']){
+                                      <div class="text-danger small mt-1">L'email est requis.</div>
+                                    }
+                                }
+                            </div>
+
+                            <!-- Mot de passe -->
+                            <div class="mb-3">
+                                <label for="password" class="form-label">
+                                    <i class="bi bi-lock"></i> Mot de passe
+                                </label>
+                                <input type="password"
+                                class="form-control form-control-lg"
+                                placeholder="••••••••"
+                                required
+                                minlength="6"
+                                [(ngModel)]="userLogin.password"
+                                name="password"
+                                #passwordCtrl="ngModel">
+                                @if (isFieldInvalid('password', formCtrl)){
+                                    @if (passwordCtrl.errors?.['required']){
+                                      <div class="text-danger small mt-1">Le mot de passe est requis.</div>
+                                    }
+                                    @if (passwordCtrl.errors?.['minlength']){
+                                      <div class="text-danger small mt-1">Le mot de passe doit contenir au moins 6 caractères.</div>
+                                    }
+                                }
+                            </div>
+
+                            <!-- Se souvenir de moi et mot de passe oublié -->
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+
+                                <a href="#" class="small text-decoration-none">Mot de passe oublié ?</a>
+                            </div>
+
+                            <!-- Bouton de connexion -->
+                            <div class="d-flex justify-content-center mb-3">
+                              <button
+                              type="submit"
+                              class="btn btn-success btn-lg"
+                              [disabled]="formCtrl.invalid">
+                                <i class="bi bi-box-arrow-in-right"></i> Se connecter
+                              </button>
+                            </div>
+
+                            <!-- Séparateur -->
+                            <div class="text-center mb-3">
+                                <span class="text-muted small">ou</span>
+                            </div>
+
+                            <!-- Lien vers création de compte -->
+                            <div class="text-center">
+                                <p class="mb-0 text-muted small">
+                                    Vous n'avez pas de compte ?
+                                    <a routerLink="/public/creer-compte" class="text-decoration-none fw-medium">
+                                        Créer un compte
+                                    </a>
+                                </p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Informations supplémentaires -->
+                <div class="text-center mt-4">
+                    <p class="text-muted small mb-0">
+                        © 2026 Gestion RV Médicaux. Tous droits réservés.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

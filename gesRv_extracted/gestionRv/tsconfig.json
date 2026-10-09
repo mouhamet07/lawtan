@@ -1,0 +1,47 @@
+/* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
+/* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./dist/out-tsc",
+    "strict": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "bundler",
+    "importHelpers": true,
+    "target": "ES2022",
+    "module": "ES2022",
+    "paths": {
+      "@mock": ["./src/app/mock"],
+      "@mock/*": ["./src/app/mock/*"],
+      "@core": ["./src/app/core"],
+      "@core/*": ["./src/app/core/*"],
+      "@core/models/*": ["./src/app/core/models/*"],
+      "@core/services/*": ["./src/app/core/services/*"],
+      "@features": ["./src/app/features"],
+      "@features/*": ["./src/app/features/*"],
+      "@features/private/models/*": ["./src/app/features/private/models/*"],
+      "@features/private/index": ["./src/app/features/private/index.ts"],
+      "@layouts": ["./src/app/layouts"],
+      "@layouts/*": ["./src/app/layouts/*"],
+      "@components": ["./src/app/components"],
+      "@components/*": ["./src/app/components/*"],
+      "@environments/*": ["./src/environments/*"],
+      "@app/*": ["./src/app/*"],
+      "@shared/*": ["./src/app/shared/*"],
+    }
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  }
+}

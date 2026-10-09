@@ -1,1 +1,439 @@
-<p>accueil works!</p>
+<!-- ========================================================
+     SECTION 1 – Bannière héro
+     ======================================================== -->
+<section class="hero" aria-label="Présentation LAWTAN">
+  <div class="hero__bg" aria-hidden="true"></div>
+  <div class="container hero__content">
+    <p class="hero__eyebrow">Groupement d'Intérêt Économique</p>
+    <h1 class="hero__title">
+      Du champ à la table,<br>
+      <span class="hero__title-accent">l'agriculture au cœur de LAWTAN</span>
+    </h1>
+    <p class="hero__subtitle">
+      Transformation du riz, services mécanisés et production laitière :
+      des filières complémentaires pour un développement agricole durable.
+    </p>
+    <div class="hero__cta-group">
+      <a class="btn btn--primary" routerLink="/activites/pole-1">Nos activités agricoles</a>
+      <a class="btn btn--outline" routerLink="/activites/pole-2">Ferme LAWTAN</a>
+      <a class="btn btn--ghost" routerLink="/contact">Nous contacter</a>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================
+     SECTION 2 – Les deux pôles d'activité
+     ======================================================== -->
+<section class="poles" aria-labelledby="poles-title">
+  <div class="container">
+    <header class="section-header">
+      <p class="section-eyebrow">Nos deux pôles</p>
+      <h2 id="poles-title" class="section-title">Des activités complémentaires, une même ambition</h2>
+      <p class="section-lead">
+        Le GIE LAWTAN réunit deux pôles distincts autour d'une mission commune :
+        valoriser les ressources agricoles locales et créer de la valeur pour les communautés rurales.
+      </p>
+    </header>
+
+    <div class="poles__grid">
+      <!-- Pôle 1 – Transformation agricole -->
+      <article class="pole-card pole-card--agro" aria-labelledby="pole1-title">
+        <div class="pole-card__visual" aria-hidden="true">
+          <span class="pole-card__icon">🌾</span>
+        </div>
+        <div class="pole-card__body">
+          <p class="pole-card__eyebrow">Pôle 1</p>
+          <h3 id="pole1-title" class="pole-card__title">
+            Transformation agricole & services mécanisés
+          </h3>
+          <p class="pole-card__desc">
+            Valorisation du riz paddy en riz blanc, brisures et son.
+            Prestations mécanisées de labour, d'offsettage, de biyonnage
+            et de moissonnage pour les exploitants agricoles.
+          </p>
+          <ul class="pole-card__features" aria-label="Services proposés">
+            <li>Transformation et conditionnement du riz</li>
+            <li>Labour et préparation des sols</li>
+            <li>Moissonnage et récolte mécanisée</li>
+            <li>Pressage de paille</li>
+          </ul>
+          <a class="btn btn--primary" routerLink="/activites/pole-1">
+            Découvrir nos activités
+            <svg class="btn__arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="m9 18 6-6-6-6"/>
+            </svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Pôle 2 – Ferme LAWTAN -->
+      <article class="pole-card pole-card--ferme" aria-labelledby="pole2-title">
+        <div class="pole-card__visual" aria-hidden="true">
+          <span class="pole-card__icon">🥛</span>
+        </div>
+        <div class="pole-card__body">
+          <p class="pole-card__eyebrow">Pôle 2</p>
+          <h3 id="pole2-title" class="pole-card__title">
+            Ferme LAWTAN & produits laitiers
+          </h3>
+          <p class="pole-card__desc">
+            Élevage bovin avec des pratiques respectueuses du bien-être animal.
+            Production de lait frais et de lait caillé, avec des projets de
+            développement vers le fromage et le yaourt.
+          </p>
+          <ul class="pole-card__features" aria-label="Produits proposés">
+            <li>Lait frais de qualité</li>
+            <li>Lait caillé traditionnel</li>
+            <li>Fromage (à venir)</li>
+            <li>Yaourt (à venir)</li>
+          </ul>
+          <a class="btn btn--secondary" routerLink="/activites/pole-2">
+            Découvrir la ferme
+            <svg class="btn__arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="m9 18 6-6-6-6"/>
+            </svg>
+          </a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================
+     SECTION 3 – Engagements qualité
+     ======================================================== -->
+<section class="engagements" aria-labelledby="engagements-title">
+  <div class="container">
+    <header class="section-header">
+      <p class="section-eyebrow">Nos engagements</p>
+      <h2 id="engagements-title" class="section-title">Qualité, hygiène et traçabilité</h2>
+    </header>
+
+    <ul class="engagements__grid" role="list">
+      <li class="engagement-item">
+        <span class="engagement-item__icon" aria-hidden="true">✅</span>
+        <h3 class="engagement-item__title">Qualité contrôlée</h3>
+        <p class="engagement-item__desc">
+          Chaque lot de production fait l'objet de contrôles rigoureux
+          pour garantir des produits conformes aux exigences des clients.
+        </p>
+      </li>
+      <li class="engagement-item">
+        <span class="engagement-item__icon" aria-hidden="true">🔬</span>
+        <h3 class="engagement-item__title">Hygiène irréprochable</h3>
+        <p class="engagement-item__desc">
+          Des procédures strictes d'hygiène encadrent toutes nos activités,
+          de la production à la mise à disposition des produits.
+        </p>
+      </li>
+      <li class="engagement-item">
+        <span class="engagement-item__icon" aria-hidden="true">📋</span>
+        <h3 class="engagement-item__title">Traçabilité</h3>
+        <p class="engagement-item__desc">
+          Nos produits sont identifiés et suivis tout au long de la chaîne,
+          de la matière première au produit final livré.
+        </p>
+      </li>
+      <li class="engagement-item">
+        <span class="engagement-item__icon" aria-hidden="true">🌿</span>
+        <h3 class="engagement-item__title">Production responsable</h3>
+        <p class="engagement-item__desc">
+          Respect du bien-être animal, des pratiques agricoles durables
+          et du cadre environnemental de nos zones d'intervention.
+        </p>
+      </li>
+    </ul>
+
+    <div class="engagements__cta">
+      <a class="btn btn--outline-dark" routerLink="/qualite-tracabilite">
+        En savoir plus sur notre démarche qualité
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================
+     SECTION 4 – Produits & services en vedette
+     ======================================================== -->
+<section class="produits" aria-labelledby="produits-title">
+  <div class="container">
+    <header class="section-header">
+      <p class="section-eyebrow">Ce que nous proposons</p>
+      <h2 id="produits-title" class="section-title">Nos produits et services</h2>
+    </header>
+
+    <div class="produits__grid">
+      <div class="produit-card">
+        <div class="produit-card__icon" aria-hidden="true">🌾</div>
+        <h3 class="produit-card__title">Riz blanc</h3>
+        <p class="produit-card__desc">
+          Issu de la transformation du riz paddy local.
+          Disponible en différents grades et conditionnements.
+        </p>
+        <a class="produit-card__link" routerLink="/activites/pole-1">
+          Demander un prix <span aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      <div class="produit-card">
+        <div class="produit-card__icon" aria-hidden="true">🫙</div>
+        <h3 class="produit-card__title">Brisures & son</h3>
+        <p class="produit-card__desc">
+          Sous-produits de la transformation du riz,
+          idéaux pour l'alimentation animale et l'industrie.
+        </p>
+        <a class="produit-card__link" routerLink="/activites/pole-1">
+          Demander un prix <span aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      <div class="produit-card">
+        <div class="produit-card__icon" aria-hidden="true">🚜</div>
+        <h3 class="produit-card__title">Services mécanisés</h3>
+        <p class="produit-card__desc">
+          Labour, offsettage, biyonnage, moissonnage.
+          Interventions à l'hectare ou à l'heure, sur devis.
+        </p>
+        <a class="produit-card__link" routerLink="/contact">
+          Demander un devis <span aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      <div class="produit-card">
+        <div class="produit-card__icon" aria-hidden="true">🥛</div>
+        <h3 class="produit-card__title">Lait frais</h3>
+        <p class="produit-card__desc">
+          Produit à la Ferme LAWTAN selon des pratiques
+          d'élevage respectueuses. Disponible en commande directe.
+        </p>
+        <a class="produit-card__link" routerLink="/activites/pole-2">
+          Commander <span aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      <div class="produit-card">
+        <div class="produit-card__icon" aria-hidden="true">🫶</div>
+        <h3 class="produit-card__title">Lait caillé</h3>
+        <p class="produit-card__desc">
+          Transformé à la ferme, le lait caillé est disponible
+          pour les particuliers, restaurants et distributeurs.
+        </p>
+        <a class="produit-card__link" routerLink="/activites/pole-2">
+          Commander <span aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      <div class="produit-card produit-card--cta">
+        <p class="produit-card__cta-label">Vous êtes distributeur, restaurateur ou grossiste ?</p>
+        <a class="btn btn--primary" routerLink="/contact">Demander un partenariat</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================
+     SECTION 5 – Parcours clients
+     ======================================================== -->
+<section class="parcours" aria-labelledby="parcours-title">
+  <div class="container">
+    <header class="section-header">
+      <p class="section-eyebrow">Comment ça marche</p>
+      <h2 id="parcours-title" class="section-title">Travaillez avec nous en 3 étapes</h2>
+    </header>
+
+    <div class="parcours__tabs" role="tablist" aria-label="Parcours clients">
+      <button
+        type="button"
+        class="parcours__tab"
+        [class.is-active]="activeTab === 'agricole'"
+        (click)="activeTab = 'agricole'"
+        role="tab"
+        [attr.aria-selected]="activeTab === 'agricole'"
+        aria-controls="tab-agricole"
+        id="btn-agricole"
+      >Exploitant agricole</button>
+      <button
+        type="button"
+        class="parcours__tab"
+        [class.is-active]="activeTab === 'produits'"
+        (click)="activeTab = 'produits'"
+        role="tab"
+        [attr.aria-selected]="activeTab === 'produits'"
+        aria-controls="tab-produits"
+        id="btn-produits"
+      >Client produits</button>
+      <button
+        type="button"
+        class="parcours__tab"
+        [class.is-active]="activeTab === 'distributeur'"
+        (click)="activeTab = 'distributeur'"
+        role="tab"
+        [attr.aria-selected]="activeTab === 'distributeur'"
+        aria-controls="tab-distributeur"
+        id="btn-distributeur"
+      >Distributeur & revendeur</button>
+    </div>
+
+    @if (activeTab === 'agricole') {
+      <ol class="parcours__steps" id="tab-agricole" role="tabpanel" aria-labelledby="btn-agricole">
+        <li class="step">
+          <span class="step__num" aria-hidden="true">1</span>
+          <div>
+            <h3 class="step__title">Consultez nos services</h3>
+            <p class="step__desc">Labour, moissonnage, offsettage… Choisissez la prestation adaptée à votre exploitation.</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step__num" aria-hidden="true">2</span>
+          <div>
+            <h3 class="step__title">Envoyez votre demande</h3>
+            <p class="step__desc">Indiquez votre localité, la surface estimée et la date souhaitée via le formulaire de devis.</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step__num" aria-hidden="true">3</span>
+          <div>
+            <h3 class="step__title">Nous vous recontactons</h3>
+            <p class="step__desc">Notre équipe confirme les détails de l'intervention et l'organisation sur le terrain.</p>
+          </div>
+        </li>
+      </ol>
+    }
+    @if (activeTab === 'produits') {
+      <ol class="parcours__steps" id="tab-produits" role="tabpanel" aria-labelledby="btn-produits">
+        <li class="step">
+          <span class="step__num" aria-hidden="true">1</span>
+          <div>
+            <h3 class="step__title">Explorez nos produits</h3>
+            <p class="step__desc">Consultez nos fiches produits : riz, brisures, son, lait frais, lait caillé et conditionnements disponibles.</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step__num" aria-hidden="true">2</span>
+          <div>
+            <h3 class="step__title">Envoyez une demande de prix</h3>
+            <p class="step__desc">Indiquez le produit souhaité, la quantité estimée et vos coordonnées. Aucun paiement en ligne requis.</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step__num" aria-hidden="true">3</span>
+          <div>
+            <h3 class="step__title">Confirmation commerciale</h3>
+            <p class="step__desc">L'équipe LAWTAN vous répond rapidement pour confirmer disponibilité, prix et modalités de livraison.</p>
+          </div>
+        </li>
+      </ol>
+    }
+    @if (activeTab === 'distributeur') {
+      <ol class="parcours__steps" id="tab-distributeur" role="tabpanel" aria-labelledby="btn-distributeur">
+        <li class="step">
+          <span class="step__num" aria-hidden="true">1</span>
+          <div>
+            <h3 class="step__title">Découvrez notre offre</h3>
+            <p class="step__desc">Consultez les produits de la Ferme LAWTAN et du pôle transformation, disponibles pour la revente.</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step__num" aria-hidden="true">2</span>
+          <div>
+            <h3 class="step__title">Soumettez votre demande de partenariat</h3>
+            <p class="step__desc">Formulaire dédié pour les revendeurs, restaurants, hôtels et grandes surfaces souhaitant s'approvisionner.</p>
+          </div>
+        </li>
+        <li class="step">
+          <span class="step__num" aria-hidden="true">3</span>
+          <div>
+            <h3 class="step__title">Accord et organisation</h3>
+            <p class="step__desc">Nous convenons ensemble des volumes, des prix, de la fréquence et des modalités de livraison.</p>
+          </div>
+        </li>
+      </ol>
+    }
+
+    <div class="parcours__cta">
+      <a class="btn btn--primary" routerLink="/contact">Démarrer maintenant</a>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================
+     SECTION 6 – Dernières actualités (placeholder)
+     ======================================================== -->
+<section class="actualites" aria-labelledby="actualites-title">
+  <div class="container">
+    <header class="section-header section-header--row">
+      <div>
+        <p class="section-eyebrow">Restez informé</p>
+        <h2 id="actualites-title" class="section-title">Actualités & réalisations</h2>
+      </div>
+      <a class="btn btn--outline-dark" routerLink="/actualites">Toutes les actualités</a>
+    </header>
+
+    <div class="actualites__grid">
+      <!-- Cartes placeholder – à remplacer par des données dynamiques -->
+      <article class="actu-card" aria-labelledby="actu-1-title">
+        <div class="actu-card__badge">Ferme</div>
+        <div class="actu-card__body">
+          <p class="actu-card__date">Octobre 2026</p>
+          <h3 id="actu-1-title" class="actu-card__title">
+            Lancement du site institutionnel LAWTAN
+          </h3>
+          <p class="actu-card__excerpt">
+            Le GIE LAWTAN se dote d'une présence digitale pour mieux servir ses clients,
+            distributeurs et partenaires à travers un site moderne et accessible.
+          </p>
+          <a class="actu-card__link" routerLink="/actualites">Lire la suite <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+
+      <article class="actu-card" aria-labelledby="actu-2-title">
+        <div class="actu-card__badge">Transformation</div>
+        <div class="actu-card__body">
+          <p class="actu-card__date">Octobre 2026</p>
+          <h3 id="actu-2-title" class="actu-card__title">
+            Campagne de transformation du riz paddy
+          </h3>
+          <p class="actu-card__excerpt">
+            LAWTAN prépare la nouvelle campagne de collecte et de transformation
+            du riz paddy. Contactez-nous pour connaître les modalités d'achat.
+          </p>
+          <a class="actu-card__link" routerLink="/actualites">Lire la suite <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+
+      <article class="actu-card" aria-labelledby="actu-3-title">
+        <div class="actu-card__badge">Services</div>
+        <div class="actu-card__body">
+          <p class="actu-card__date">Octobre 2026</p>
+          <h3 id="actu-3-title" class="actu-card__title">
+            Demandes de prestations agricoles mécanisées
+          </h3>
+          <p class="actu-card__excerpt">
+            Le pôle services mécanisés de LAWTAN est disponible pour les campagnes
+            de labour, moissonnage et préparation des sols. Réservez dès maintenant.
+          </p>
+          <a class="actu-card__link" routerLink="/contact">Demander un devis <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================
+     SECTION 7 – Appel à l'action final
+     ======================================================== -->
+<section class="cta-final" aria-labelledby="cta-final-title">
+  <div class="container cta-final__inner">
+    <h2 id="cta-final-title" class="cta-final__title">
+      Prêt à travailler avec LAWTAN ?
+    </h2>
+    <p class="cta-final__subtitle">
+      Que vous soyez client, partenaire, distributeur ou exploitant agricole,
+      notre équipe est à votre écoute.
+    </p>
+    <div class="cta-final__actions">
+      <a class="btn btn--white" routerLink="/contact">Nous contacter</a>
+      <a class="btn btn--white-outline" routerLink="/contact">Demander un devis</a>
+    </div>
+  </div>
+</section>

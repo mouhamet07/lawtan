@@ -1,0 +1,182 @@
+<!-- Page de Création de Compte -->
+<div class="bg-light min-vh-100">
+    <div class="container">
+        <div class="row min-vh-100 align-items-center justify-content-center py-5">
+            <div class="col-md-8 col-lg-6">
+                <!-- Logo et titre -->
+                <div class="text-center mb-4">
+                    <div class="bg-success bg-opacity-10 text-success rounded-circle d-inline-flex align-items-center justify-content-center mb-3"
+                        style="width: 80px; height: 80px;">
+                        <i class="bi bi-hospital fs-1"></i>
+                    </div>
+                    <h3 class="fw-light">Créer votre compte</h3>
+                    <p class="text-muted">Rejoignez notre plateforme de gestion des rendez-vous médicaux</p>
+                </div>
+
+                <!-- Formulaire -->
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        @if (messageSucces) {
+                          <div  class="alert alert-success text-center">
+                              {{ messageSucces }}
+                          </div>
+                        }
+                        <form [formGroup]="patientForm" (ngSubmit)="onSubmit()">
+
+                            <!-- Informations personnelles -->
+                            <h6 class="text-muted mb-3">
+                                <i class="bi bi-person-circle"></i> Informations personnelles
+                            </h6>
+
+                            <div class="mb-3">
+                              <label class="form-label">Nom</label>
+                              <input type="text" class="form-control" placeholder="Votre nom" formControlName="nomComplet">
+                              <div>
+                                @if(isFieldInvalid('nomComplet')){
+                                  @if (f['nomComplet'].errors?.['required']){
+                                    <div class="text-danger small mt-1">Le nom est requis.</div>
+                                  }
+                                }
+                              </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Date de naissance</label>
+                                    <input type="date" class="form-control" formControlName="dateNaissance">
+                                    <div>
+                                      @if(isFieldInvalid('dateNaissance')){
+                                        @if (f['dateNaissance'].errors?.['required']){
+                                          <div class="text-danger small mt-1">La date de naissance est requise.</div>
+                                        }
+                                      }
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Téléphone</label>
+                                    <input type="tel" class="form-control" placeholder="771234567" formControlName="telephone">
+                                    <div>
+                                      @if(isFieldInvalid('telephone')){
+                                        @if (f['telephone'].errors?.['required']){
+                                          <div class="text-danger small mt-1">Le téléphone est requis.</div>
+                                        }
+                                        @if (f['telephone'].errors?.['pattern']){
+                                          <div class="text-danger small mt-1">Veuillez entrer un numéro de téléphone valide (ex: 771234567).</div>
+                                        }
+                                      }
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Adresse</label>
+                                <textarea class="form-control" rows="2" placeholder="Votre adresse complète" formControlName="adresse"></textarea>
+                                <div>
+                                  @if(isFieldInvalid('adresse')){
+                                    @if (f['adresse'].errors?.['required']){
+                                      <div class="text-danger small mt-1">L'adresse est requise.</div>
+                                    }
+                                  }
+                                </div>
+                            </div>
+
+                            <hr class="my-4">
+
+                            <!-- Informations de connexion -->
+                            <h6 class="text-muted mb-3">
+                                <i class="bi bi-key"></i> Informations de connexion
+                            </h6>
+
+                            <div class="mb-3">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-control" placeholder="votre@email.com" formControlName="email">
+                                <div>
+                                  @if(isFieldInvalid('email')){
+                                    @if (f['email'].errors?.['required']){
+                                      <div class="text-danger small mt-1">L'email est requis.</div>
+                                    }
+                                    @if (f['email'].errors?.['email']){
+                                      <div class="text-danger small mt-1">Veuillez entrer un email valide.</div>
+                                    }
+                                  }
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Mot de passe</label>
+                                <input type="password" class="form-control" placeholder="••••••••" formControlName="motDePasse">
+                                <div>
+                                  @if(isFieldInvalid('motDePasse')){
+                                    @if (f['motDePasse'].errors?.['required']){
+                                      <div class="text-danger small mt-1">Le mot de passe est requis.</div>
+                                    }
+                                    @if (f['motDePasse'].errors?.['minlength']){
+                                      <div class="text-danger small mt-1">Le mot de passe doit contenir au moins 8 caractères.</div>
+                                    }
+                                  }
+                                </div>
+                            </div>
+
+                            <hr class="my-4">
+
+                            <!-- Informations médicales -->
+                            <h6 class="text-muted mb-3">
+                                <i class="bi bi-heart-pulse"></i> Informations médicales (optionnel)
+                            </h6>
+
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Groupe sanguin</label>
+                                    <select class="form-select" formControlName="groupeSanguin">
+                                        <option value="">-- Sélectionnez --</option>
+                                        <option>A+</option><option>A-</option>
+                                        <option>B+</option><option>B-</option>
+                                        <option>AB+</option><option>AB-</option>
+                                        <option>O+</option><option>O-</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Allergies connues</label>
+                                    <input type="text" class="form-control" placeholder="Ex: Pénicilline" formControlName="allergies">
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="form-label">Maladies chroniques</label>
+                                <textarea class="form-control" rows="2" placeholder="Listez vos maladies chroniques" formControlName="maladiesChroniques"></textarea>
+                            </div>
+
+                            <!-- Bouton -->
+                            <div class="d-flex justify-content-center mb-3">
+                                <button type="button" class="btn btn-secondary btn-lg me-2"
+                                (click)="onReset()">
+                                  <i class="bi bi-x-circle"></i> Annuler
+                                </button>
+                                <button type="submit" class="btn btn-success btn-lg"
+                                >
+                                  <i class="bi bi-person-plus"></i> Créer mon compte
+                                </button>
+                            </div>
+
+                            <!-- Lien connexion -->
+                            <div class="text-center">
+                                <p class="mb-0 text-muted small">
+                                    Vous avez déjà un compte ?
+                                    <a routerLink="/public/login" class="text-decoration-none fw-medium">Se connecter</a>
+                                </p>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <div class="text-center mt-4">
+                    <p class="text-muted small mb-0">
+                        © 2026 Gestion RV Médicaux. Tous droits réservés.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,245 @@
+<!-- Formulaire de Demande de Rendez-vous -->
+<div class="container-fluid pb-4 ">
+    <div class="row mb-4">
+        <div class="col">
+            <div class="card-header bg-white border-0 py-3">
+                <h2 class="fw-light"><i class="bi bi-calendar-plus"></i> Nouvelle Demande de Rendez-vous</h2>
+                <p class="text-muted">Faites une nouvelle demande de rendez-vous</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-4">
+                  @if (messageSucces) {
+                          <div  class="alert alert-success text-center">
+                              {{ messageSucces }}
+                          </div>
+                        }
+                    <form [formGroup]="demandeForm" (ngSubmit)="onSubmitDemande()">
+                        <!-- Type de consultation -->
+                        <div class="mb-4">
+                            <label class="form-label fw-medium">
+                                <i class="bi bi-card-checklist"></i> Type de consultation
+                            </label>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="card border-2 h-100">
+                                        <input type="radio" class="btn-check" name="type" id="consultation" value="CONSULTATION" formControlName="type" checked>
+                                        <label class="card-body text-center p-4" for="consultation" style="cursor: pointer;">
+                                            <i class="bi bi-clipboard2-pulse fs-1 text-primary"></i>
+                                            <h6 class="mt-2 mb-0">Consultation</h6>
+                                            <p class="mb-0 small text-muted">Consultation médicale générale</p>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card border-2 h-100">
+                                        <input type="radio" class="btn-check" name="type" id="prestation" value="PRESTATION" formControlName="type">
+                                        <label class="card-body text-center p-4" for="prestation" style="cursor: pointer;">
+                                            <i class="bi bi-activity fs-1 text-success"></i>
+                                            <h6 class="mt-2 mb-0">Prestation</h6>
+                                            <p class="mb-0 small text-muted">Radio, analyse, examen</p>
+                                        </label>
+                                    </div>
+                                </div>
+                                @if(isFieldInvalid('type')){
+                                  @if (f['type'].errors?.['required']){
+                                    <div class="text-danger small mt-1">Le type est requis.</div>
+                                  }
+                                }
+                            </div>
+                        </div>
+
+                        <!-- Spécialité -->
+                        <div class="mb-4">
+                            <label for="specialite" class="form-label fw-medium">
+                                <i class="bi bi-hospital"></i> Spécialité médicale
+                            </label>
+                          <select class="form-select form-select-lg" formControlName="specialite">
+                                <option value="">Choisissez une spécialité</option>
+                                <option value="Generaliste">Médecin Généraliste</option>
+                                <option value="Cardiologue">Cardiologue</option>
+                                <option value="Dermatologue">Dermatologue</option>
+                                <option value="Pediatre">Pédiatre</option>
+                                <option value="Oculiste">Oculiste</option>
+                                <option value="ORL">ORL</option>
+                                <option value="Psychiatre">Psychiatre</option>
+                                <option value="Chirurgien">Chirurgien</option>
+                                <option value="Dentiste">Dentiste</option>
+                                <option value="Gynécologue">Gynécologue</option>
+                            </select>
+                            @if(isFieldInvalid('specialite')){
+                              @if (f['specialite'].errors?.['required']){
+                                <div class="text-danger small mt-1">La spécialité est requise.</div>
+                              }
+                            }
+                        </div>
+
+                        <!-- Date et heure -->
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <label for="dateRV" class="form-label fw-medium">
+                                    <i class="bi bi-calendar3"></i> Date souhaitée
+                                </label>
+                                <input type="date" class="form-control form-control-lg" formControlName="date">
+                                <div class="form-text">Choisissez une date pour votre rendez-vous</div>
+                                @if(isFieldInvalid('date')){
+                                  @if (f['date'].errors?.['required']){
+                                    <div class="text-danger small mt-1">La date est requise.</div>
+                                  }
+                                }
+                            </div>
+                            <div class="col-md-6">
+                                <label for="heureRV" class="form-label fw-medium">
+                                    <i class="bi bi-clock"></i> Heure souhaitée
+                                </label>
+                                <input type="time" class="form-control form-control-lg" formControlName="heure">
+                                <div class="form-text">Format: HH:MM (ex: 14:30)</div>
+                                @if(isFieldInvalid('heure')){
+                                  @if (f['heure'].errors?.['required']){
+                                    <div class="text-danger small mt-1">L'heure est requise.</div>
+                                  }
+                                }
+                            </div>
+                        </div>
+
+                        <!-- Motif -->
+                        <div class="mb-4">
+                            <label for="motif" class="form-label fw-medium">
+                                <i class="bi bi-chat-text"></i> Motif de consultation
+                            </label>
+                            <textarea
+                                class="form-control"
+                                id="motif"
+                                rows="4"
+                                formControlName="motif"
+                                placeholder="Décrivez brièvement le motif de votre consultation (symptômes, antécédents, etc.)"></textarea>
+                            <div class="form-text">Cette information aidera le médecin à mieux préparer votre consultation</div>
+                            @if(isFieldInvalid('motif')){
+                              @if (f['motif'].errors?.['required']){
+                                <div class="text-danger small mt-1">Le motif est requis.</div>
+                              }
+                            }
+                        </div>
+
+                        <!-- Alerte informative -->
+                        <div class="alert alert-light border-start border-primary border-4 mb-4">
+                            <div class="d-flex">
+                                <div class="flex-shrink-0">
+                                    <i class="bi bi-info-circle text-primary fs-4"></i>
+                                </div>
+                                <div class="flex-grow-1 ms-3">
+                                    <h6 class="alert-heading">À savoir</h6>
+                                    <p class="mb-0 small">
+                                        Votre demande sera enregistrée avec le statut "En attente" et sera examinée par le service médical.
+                                        Vous recevrez une notification une fois votre demande traitée.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Boutons d'action -->
+                        <div class="d-flex gap-2 justify-content-end">
+                            <a (click)="onReset()" class="btn btn-lg btn-outline-secondary">
+                                <i class="bi bi-x-lg"></i> Annuler
+                            </a>
+                            <button type="submit" class="btn btn-lg btn-primary px-5">
+                                <i class="bi bi-send"></i> Soumettre la demande
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Colonne d'aide -->
+        <div class="col-lg-4">
+            <div class="card border-0 shadow-sm bg-light mb-3">
+                <div class="card-body">
+                    <h5 class="card-title mb-3">
+                        <i class="bi bi-question-circle"></i> Comment ça marche ?
+                    </h5>
+
+                    <div class="d-flex mb-3">
+                        <div class="flex-shrink-0">
+                            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                <strong>1</strong>
+                            </div>
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <h6 class="mb-1">Remplissez le formulaire</h6>
+                            <p class="mb-0 small text-muted">Sélectionnez le type, la spécialité et les détails de votre demande</p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex mb-3">
+                        <div class="flex-shrink-0">
+                            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                <strong>2</strong>
+                            </div>
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <h6 class="mb-1">Soumettez votre demande</h6>
+                            <p class="mb-0 small text-muted">Votre demande sera en attente de validation</p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex mb-3">
+                        <div class="flex-shrink-0">
+                            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                <strong>3</strong>
+                            </div>
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <h6 class="mb-1">Recevez une confirmation</h6>
+                            <p class="mb-0 small text-muted">Le service médical validera votre rendez-vous</p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex">
+                        <div class="flex-shrink-0">
+                            <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                <strong>4</strong>
+                            </div>
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <h6 class="mb-1">Consultez le médecin</h6>
+                            <p class="mb-0 small text-muted">Présentez-vous à l'heure prévue</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title mb-3">
+                        <i class="bi bi-telephone"></i> Besoin d'aide ?
+                    </h5>
+                    <p class="small mb-2">
+                        <strong>Assistance téléphonique</strong><br>
+                        +221 33 123 45 67
+                    </p>
+                    <p class="small mb-2">
+                        <strong>Email</strong><br>
+                        contact&#64;gestionrv.sn
+                    </p>
+                    <p class="small mb-0">
+                        <strong>Horaires</strong><br>
+                        Lun - Ven: 8h - 18h<br>
+                        Sam: 9h - 13h
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.btn-check:checked + label {
+    border-color: var(--bs-primary) !important;
+    background-color: rgba(13, 110, 253, 0.05);
+}
+</style>

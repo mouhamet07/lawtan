@@ -1,1 +1,50 @@
 /* You can add global styles to this file, and also import other style files */
+/* Variables de la charte LAWTAN (valeurs mesurées sur le logo : à faire valider) */
+:root {
+  --color-primary: #1b5e2b;
+  --color-primary-dark: #134420;
+  --color-secondary: #4ea335;
+  --color-lime: #aed632;
+  --color-accent: #f7c708;
+  --color-cta: #c8161b;
+  --color-cta-hover: #a31216;
+  --color-ivory: #faf8f2;
+  --color-white: #ffffff;
+  --color-text: #1f2a21;
+  --color-text-muted: #54615a;
+  --color-border: #e3e1d8;
+  --color-focus: #1b5e2b;
+
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-brand: 'Brush Script MT', 'Segoe Script', 'URW Chancery L', cursive;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-padding-top: 5.5rem; /* évite que le header sticky masque les ancres */
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  background: var(--color-white);
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+h1,
+h2:not(.footer__title) {
+  font-family: var(--font-brand);
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+img {
+  max-width: 100%;
+}

@@ -1,0 +1,89 @@
+<footer class="footer">
+  <div class="container footer__main" [class.footer__main--no-navigation]="!nav.length">
+    <section class="footer__brand" aria-label="Présentation du GIE LAWTAN">
+      <a class="footer__logo" routerLink="/" [attr.aria-label]="site.logo.alt + ' – Accueil'">
+        <img
+          [src]="site.logo.src"
+          [attr.srcset]="site.logo.src2x ? site.logo.src + ' 1x, ' + site.logo.src2x + ' 2x' : null"
+          [width]="site.logo.width"
+          [height]="site.logo.height"
+          [alt]="site.logo.alt"
+          loading="lazy"
+        />
+      </a>
+      <p class="footer__eyebrow">GIE LAWTAN</p>
+      <p class="footer__intro">
+        Transformation du riz, services agricoles mécanisés, élevage et production laitière :
+        des activités complémentaires réunies au sein du GIE LAWTAN.
+      </p>
+    </section>
+
+    @if (nav.length) {
+      <nav class="footer__section" aria-labelledby="footer-nav-title">
+        <h2 id="footer-nav-title" class="footer__title">Navigation</h2>
+        <ul class="footer__list">
+          @for (link of nav; track link.route) {
+            <li><a [routerLink]="link.route" [fragment]="link.fragment">{{ link.label }}</a></li>
+          }
+        </ul>
+      </nav>
+    }
+
+    <section class="footer__section" aria-labelledby="footer-activities-title">
+      <h2 id="footer-activities-title" class="footer__title">Nos activités</h2>
+      <ul class="footer__activities">
+        @for (activity of activities; track activity.label) {
+          <li>
+            @if (activity.routeAvailable) {
+              <a [routerLink]="activity.route">{{ activity.label }}</a>
+            } @else {
+              <span>{{ activity.label }}</span>
+            }
+            <span class="footer__activity-detail">{{ activity.description }}</span>
+          </li>
+        }
+      </ul>
+    </section>
+
+    <section class="footer__section footer__contact" aria-labelledby="footer-contact-title">
+      <h2 id="footer-contact-title" class="footer__title">Nous contacter</h2>
+      @if (hasContact) {
+        <address>
+          @if (telHref) {
+            <p><span class="footer__label">Téléphone</span><a [href]="telHref">{{ site.contact.phone }}</a></p>
+          }
+          @if (whatsappHref) {
+            <p>
+              <span class="footer__label">WhatsApp</span>
+              <a [href]="whatsappHref" target="_blank" rel="noopener noreferrer">{{ site.contact.whatsapp }}</a>
+            </p>
+          }
+          @if (site.contact.email) {
+            <p><span class="footer__label">E-mail</span><a [href]="'mailto:' + site.contact.email">{{ site.contact.email }}</a></p>
+          }
+          @if (site.contact.address) {
+            <p><span class="footer__label">Localisation</span><span>{{ site.contact.address }}</span></p>
+          }
+        </address>
+      } @else {
+        <p class="footer__note">Les coordonnées de LAWTAN ne sont pas encore renseignées.</p>
+      }
+      @if (contactRouteAvailable) {
+        <a class="footer__action" routerLink="/contact">Nous contacter</a>
+      }
+    </section>
+  </div>
+
+  <div class="footer__bottom">
+    <div class="container footer__bottom-inner">
+      <p>© {{ year }} {{ site.name }}. Tous droits réservés.</p>
+      @if (legal.length) {
+        <ul class="footer__legal" aria-label="Informations légales">
+          @for (link of legal; track link.route) {
+            <li><a [routerLink]="link.route">{{ link.label }}</a></li>
+          }
+        </ul>
+      }
+    </div>
+  </div>
+</footer>
