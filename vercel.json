@@ -1,0 +1,11 @@
+{
+  "installCommand": "cd LawtanFront && npm ci",
+  "buildCommand": "cd LawtanFront && npm run build",
+  "outputDirectory": "LawtanFront/dist/lawtan-front/browser",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
