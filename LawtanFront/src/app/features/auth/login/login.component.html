@@ -9,8 +9,9 @@
     <div class="showcase-content">
       <!-- Logo officiel de la marque -->
       <div class="showcase-brand">
-        <div class="brand-logo-pod">
-          <img src="/images/Logo.png" alt="Lawtan Agro Industries" class="brand-logo-img" />
+        <div class="brand-crest-wrapper">
+          <div class="brand-aura"></div>
+          <img src="/images/Logo.png" alt="Lawtan Agro Industries" class="brand-crest-logo" />
         </div>
       </div>
 
@@ -76,69 +77,54 @@
     </div>
   </aside>
 
-  <!-- Panneau d'Authentification Droit (Sleek, Centré, 0 Scrollbar) -->
+  <!-- Panneau d'Authentification Droit (Card exacte demandée) -->
   <main class="auth-pane">
-    <div class="auth-inner">
-      <!-- Mobile-only Brand Header -->
-      <div class="mobile-brand-bar">
-        <div class="brand-logo-pod small">
-          <img src="/images/Logo.png" alt="Lawtan Agro Industries" class="mobile-brand-logo-img" />
-        </div>
+    <div class="auth-card">
+      <!-- Mobile Logo -->
+      <div class="mobile-logo-box">
+        <img src="/images/Logo.png" alt="Lawtan Agro Industries" class="mobile-logo-img" />
       </div>
 
       <!-- Entête de Connexion -->
-      <header class="auth-header">
-        <div class="header-badge">Espace Partenaire & Producteur</div>
-        <h2 class="auth-title">Connexion à votre compte</h2>
-        <p class="auth-subtitle">
-          Accédez au suivi en temps réel de vos opérations et demandes.
-        </p>
+      <header class="card-header">
+        <h2 class="card-title">Connexion</h2>
+        <p class="card-subtitle">Accédez à votre espace de travail LAWTAN BIO</p>
       </header>
 
       <!-- État : Succès -->
       @if (loginSuccess()) {
         <div class="state-success">
           <div class="success-icon-wrapper">
-            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <polyline points="20 6 9 17 4 12"></polyline>
             </svg>
           </div>
-          <h3 class="success-title">Authentification réussie !</h3>
-          <p class="success-message">
-            Ravi de vous revoir. Nous préparons votre espace de travail...
-          </p>
-          <div class="success-bar">
-            <div class="success-bar-progress"></div>
-          </div>
+          <h3 class="success-title">Connexion réussie !</h3>
+          <p class="success-message">Bienvenue dans votre espace LAWTAN BIO. Redirection...</p>
         </div>
       } @else {
         <!-- Erreur éventuelle -->
         @if (loginError()) {
           <div class="alert-box" role="alert">
-            <div class="alert-icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="12" y1="8" x2="12" y2="12"></line>
-                <line x1="12" y1="16" x2="12.01" y2="16"></line>
-              </svg>
-            </div>
-            <div class="alert-text">{{ loginError() }}</div>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+            <span>{{ loginError() }}</span>
           </div>
         }
 
         <!-- Formulaire de Connexion -->
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="auth-form" novalidate>
-          <!-- Champ Identifiant -->
-          <div class="input-field-group">
-            <label for="identifier" class="field-label">
-              <span>Identifiant ou E-mail</span>
-              <span class="required">*</span>
-            </label>
-            <div class="field-input-box" [class.field-invalid]="isFieldInvalid('identifier')">
-              <span class="field-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                  <circle cx="12" cy="7" r="4"></circle>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="card-form" novalidate>
+          <!-- Email professionnel -->
+          <div class="form-field">
+            <label for="identifier" class="field-title">Email professionnel</label>
+            <div class="field-control" [class.field-error]="isFieldInvalid('identifier')">
+              <span class="field-prefix-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
                 </svg>
               </span>
               <input
@@ -146,26 +132,20 @@
                 type="text"
                 formControlName="identifier"
                 class="field-input"
-                placeholder="Ex. contact@domaine.sn ou 77 XXX XX XX"
+                placeholder="ex: amadou.sow@lawtan.sn"
                 autocomplete="username" />
             </div>
             @if (isFieldInvalid('identifier')) {
-              <p class="field-hint-error">Veuillez entrer une adresse e-mail ou un téléphone valide.</p>
+              <p class="field-error-text">Veuillez renseigner un email valide.</p>
             }
           </div>
 
-          <!-- Champ Mot de Passe -->
-          <div class="input-field-group">
-            <div class="field-label-split">
-              <label for="password" class="field-label">
-                <span>Mot de passe</span>
-                <span class="required">*</span>
-              </label>
-              <a href="javascript:void(0)" class="link-forgot">Mot de passe oublié ?</a>
-            </div>
-            <div class="field-input-box" [class.field-invalid]="isFieldInvalid('password')">
-              <span class="field-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <!-- Mot de passe -->
+          <div class="form-field">
+            <label for="password" class="field-title">Mot de passe</label>
+            <div class="field-control" [class.field-error]="isFieldInvalid('password')">
+              <span class="field-prefix-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
                   <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
                 </svg>
@@ -174,21 +154,21 @@
                 id="password"
                 [type]="showPassword() ? 'text' : 'password'"
                 formControlName="password"
-                class="field-input"
-                placeholder="••••••••••••"
+                class="field-input has-toggle"
+                placeholder="Votre mot de passe"
                 autocomplete="current-password" />
               <button
                 type="button"
-                class="btn-toggle-eye"
+                class="field-toggle-btn"
                 (click)="togglePasswordVisibility()"
-                [attr.aria-label]="showPassword() ? 'Masquer' : 'Afficher'">
+                [attr.aria-label]="showPassword() ? 'Masquer le mot de passe' : 'Afficher le mot de passe'">
                 @if (showPassword()) {
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
                     <line x1="1" y1="1" x2="23" y2="23"></line>
                   </svg>
                 } @else {
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                     <circle cx="12" cy="12" r="3"></circle>
                   </svg>
@@ -196,97 +176,53 @@
               </button>
             </div>
             @if (isFieldInvalid('password')) {
-              <p class="field-hint-error">Au moins 4 caractères requis.</p>
+              <p class="field-error-text">Mot de passe requis (au moins 4 caractères).</p>
             }
           </div>
 
-          <!-- Option Se souvenir -->
-          <div class="field-options-row">
-            <label class="custom-checkbox-label">
+          <!-- Rester connecté sur cet appareil -->
+          <div class="form-check-group">
+            <label class="check-container">
               <input
                 id="rememberMe"
                 type="checkbox"
                 formControlName="rememberMe"
-                class="checkbox-control" />
-              <span class="custom-checkbox-mark"></span>
-              <span class="checkbox-text">Rester connecté sur cet appareil</span>
+                class="check-input" />
+              <span class="check-box">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </span>
+              <span class="check-text">Rester connecté sur cet appareil</span>
             </label>
           </div>
 
-          <!-- Bouton de Soumission Principal -->
-          <div class="submit-box">
-            <button
-              type="submit"
-              class="btn-submit"
-              [disabled]="isLoading()">
-              <span class="btn-shine"></span>
-              @if (isLoading()) {
-                <span class="spinner-circle"></span>
-                <span>Authentification en cours...</span>
-              } @else {
-                <span>Se connecter</span>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="btn-arrow">
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                  <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
-              }
-            </button>
-          </div>
+          <!-- Bouton Se connecter -->
+          <button
+            type="submit"
+            class="btn-connect"
+            [disabled]="isLoading()">
+            @if (isLoading()) {
+              <span class="btn-spinner"></span>
+              <span>Connexion en cours...</span>
+            } @else {
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="btn-icon">
+                <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+                <polyline points="10 17 15 12 10 7"></polyline>
+                <line x1="15" y1="12" x2="3" y2="12"></line>
+              </svg>
+              <span>Se connecter</span>
+            }
+          </button>
         </form>
 
-        <!-- Séparateur & Liens Rapides -->
-        <div class="auth-quick-actions">
-          <div class="quick-divider">
-            <span class="divider-line"></span>
-            <span class="divider-label">Besoin d'un accompagnement ?</span>
-            <span class="divider-line"></span>
+        <!-- Séparateur & Footer Système opérationnel -->
+        <footer class="card-footer">
+          <div class="system-status">
+            <span class="system-text">Système opérationnel • LAWTAN BIO © 2026</span>
           </div>
-
-          <div class="quick-grid">
-            <a routerLink="/devis" class="quick-card">
-              <div class="quick-card-icon devis-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                  <polyline points="14 2 14 8 20 8"></polyline>
-                  <line x1="16" y1="13" x2="8" y2="13"></line>
-                  <line x1="16" y1="17" x2="8" y2="17"></line>
-                </svg>
-              </div>
-              <div class="quick-card-info">
-                <span class="quick-card-title">Demander un Devis</span>
-                <span class="quick-card-sub">Calcul d'estimation en ligne</span>
-              </div>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="quick-card-chevron">
-                <polyline points="9 18 15 12 9 6"></polyline>
-              </svg>
-            </a>
-
-            <a routerLink="/contact" class="quick-card">
-              <div class="quick-card-icon contact-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                </svg>
-              </div>
-              <div class="quick-card-info">
-                <span class="quick-card-title">Nous Contacter</span>
-                <span class="quick-card-sub">Assistance & équipe dédiée</span>
-              </div>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="quick-card-chevron">
-                <polyline points="9 18 15 12 9 6"></polyline>
-              </svg>
-            </a>
-          </div>
-        </div>
+        </footer>
       }
-
-      <!-- Badge de Sécurité Fixe & Minimaliste -->
-      <footer class="auth-security-footer">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-        </svg>
-        <span>Espace sécurisé SSL • Données cryptées • GIE LAWTAN</span>
-      </footer>
     </div>
   </main>
 </div>
