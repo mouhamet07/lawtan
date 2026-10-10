@@ -53,6 +53,9 @@ export class LoginComponent {
       // Démonstration : validation positive
       if (identifier) {
         this.loginSuccess.set(true);
+        setTimeout(() => {
+          this.router.navigate(['/ferme']);
+        }, 1200);
       } else {
         this.loginError.set('Identifiant ou mot de passe incorrect.');
       }
