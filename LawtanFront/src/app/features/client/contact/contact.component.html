@@ -1,0 +1,225 @@
+<section class="contact-page">
+  <!-- En-tête de page -->
+  <header class="page-header">
+    <div class="container">
+      <h1 class="page-title">Nous contacter</h1>
+      <p class="page-subtitle">
+        Une question, une visite ou un partenariat institutionnel ? Laissez un message à l'équipe du GIE LAWTAN.
+      </p>
+    </div>
+  </header>
+
+  <!-- Formulaire Principal Centré & Coordonnées -->
+  <div class="container content-container">
+    <main class="contact-main">
+      <div class="form-container">
+        @if (isSubmitted()) {
+          <div class="success-screen">
+            <div class="success-icon-wrapper">
+              <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </div>
+            <h2 class="success-title">Message envoyé avec succès !</h2>
+            <p class="success-desc">
+              Merci <strong>{{ submittedData()?.fullName }}</strong>. Votre message a bien été transmis aux équipes du GIE LAWTAN. Nous reviendrons vers vous sous 24h à 48h au <strong>{{ submittedData()?.phone }}</strong>.
+            </p>
+
+            <div class="summary-card">
+              <div class="summary-header">Récapitulatif transmis :</div>
+              <div class="summary-grid">
+                <div><span>Demandeur :</span> {{ submittedData()?.fullName }}</div>
+                <div><span>Téléphone :</span> {{ submittedData()?.phone }}</div>
+                <div><span>E-mail :</span> {{ submittedData()?.email }}</div>
+                <div><span>Localité :</span> {{ submittedData()?.locality }}</div>
+                <div><span>Objet :</span> {{ submittedData()?.subject }}</div>
+              </div>
+            </div>
+
+            <button type="button" class="btn btn-secondary" (click)="resetForm()">
+              Envoyer un autre message
+            </button>
+          </div>
+        } @else {
+          <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="form-body" novalidate>
+            <!-- 1. Vos Coordonnées -->
+            <fieldset class="form-section">
+              <legend class="section-legend">
+                <span class="step-badge">1</span>
+                Vos Coordonnées
+              </legend>
+
+              <!-- 2 Éléments : Identité & Structure -->
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label for="contactFullName" class="form-label">
+                    Nom complet <span class="required-star">*</span>
+                  </label>
+                  <input
+                    id="contactFullName"
+                    type="text"
+                    formControlName="fullName"
+                    class="form-input"
+                    [class.input-error]="isFieldInvalid('fullName')"
+                    placeholder="Ex: Ibrahima Diallo" />
+                  @if (isFieldInvalid('fullName')) {
+                    <p class="error-msg">Veuillez renseigner votre nom complet.</p>
+                  }
+                </div>
+
+                <div class="form-group">
+                  <label for="contactOrg" class="form-label">Entreprise / Exploitation / GIE</label>
+                  <input
+                    id="contactOrg"
+                    type="text"
+                    formControlName="organization"
+                    class="form-input"
+                    placeholder="Ex: Coopérative de Dagana (optionnel)" />
+                </div>
+              </div>
+
+              <!-- 1 Élément : Localisation -->
+              <div class="form-group">
+                <label for="contactLocality" class="form-label">
+                  Localité / Commune <span class="required-star">*</span>
+                </label>
+                <input
+                  id="contactLocality"
+                  type="text"
+                  formControlName="locality"
+                  class="form-input"
+                  [class.input-error]="isFieldInvalid('locality')"
+                  placeholder="Ex: Saint-Louis, Richard-Toll, Dagana..." />
+                @if (isFieldInvalid('locality')) {
+                  <p class="error-msg">Veuillez préciser votre localité.</p>
+                }
+              </div>
+
+              <!-- 2 Éléments : Canaux de contact -->
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label for="contactPhone" class="form-label">
+                    Numéro de Téléphone <span class="required-star">*</span>
+                  </label>
+                  <input
+                    id="contactPhone"
+                    type="tel"
+                    formControlName="phone"
+                    class="form-input"
+                    [class.input-error]="isFieldInvalid('phone')"
+                    placeholder="Ex: +221 77 123 45 67" />
+                  @if (isFieldInvalid('phone')) {
+                    <p class="error-msg">Numéro de téléphone requis.</p>
+                  }
+                </div>
+
+                <div class="form-group">
+                  <label for="contactEmail" class="form-label">
+                    Adresse E-mail <span class="required-star">*</span>
+                  </label>
+                  <input
+                    id="contactEmail"
+                    type="email"
+                    formControlName="email"
+                    class="form-input"
+                    [class.input-error]="isFieldInvalid('email')"
+                    placeholder="nom@exemple.com" />
+                  @if (isFieldInvalid('email')) {
+                    <p class="error-msg">Adresse e-mail valide requise.</p>
+                  }
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- 2. Objet de votre Demande -->
+            <fieldset class="form-section">
+              <legend class="section-legend">
+                <span class="step-badge">2</span>
+                Objet de votre Demande
+              </legend>
+
+              <div class="form-group">
+                <label for="contactSubject" class="form-label">
+                  Objet du message <span class="required-star">*</span>
+                </label>
+                <input
+                  id="contactSubject"
+                  type="text"
+                  formControlName="subject"
+                  class="form-input"
+                  [class.input-error]="isFieldInvalid('subject')"
+                  placeholder="Ex: Demande de partenariat institutionnel, visite de la ferme..." />
+                  @if (isFieldInvalid('subject')) {
+                    <p class="error-msg">Veuillez indiquer l'objet de votre démarche.</p>
+                  }
+              </div>
+            </fieldset>
+
+            <!-- 3. Votre Message & Précisions -->
+            <fieldset class="form-section">
+              <legend class="section-legend">
+                <span class="step-badge">3</span>
+                Votre Message & Précisions
+              </legend>
+
+              <div class="form-group">
+                <label for="contactMessage" class="form-label">
+                  Précisions / Commentaires <span class="required-star">*</span>
+                </label>
+                <textarea
+                  id="contactMessage"
+                  rows="4"
+                  formControlName="message"
+                  class="form-textarea"
+                  [class.input-error]="isFieldInvalid('message')"
+                  placeholder="Décrivez vos besoins, spécificités du terrain, contraintes de livraison..."></textarea>
+                @if (isFieldInvalid('message')) {
+                  <p class="error-msg">Veuillez renseigner un message d'au moins 10 caractères.</p>
+                }
+              </div>
+
+              <div class="form-check">
+                <input
+                  id="contactTerms"
+                  type="checkbox"
+                  formControlName="termsAccepted"
+                  class="form-checkbox" />
+                <label for="contactTerms" class="check-label">
+                  J'accepte que les informations saisies soient exploitées par le GIE LAWTAN pour le traitement de ma demande et la relation commerciale.
+                </label>
+              </div>
+            </fieldset>
+
+            <div class="form-actions">
+              <button
+                type="submit"
+                class="btn btn-primary-green"
+                [disabled]="isSubmitting()">
+                @if (isSubmitting()) {
+                  <span class="spinner"></span>
+                  Envoi en cours...
+                } @else {
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                  </svg>
+                  Envoyer mon message
+                }
+              </button>
+            </div>
+          </form>
+        }
+      </div>
+    </main>
+
+    <!-- Coordonnées et canaux directs partagés -->
+    <aside class="contact-details-section">
+      <div class="section-divider">
+        <span class="divider-line"></span>
+        <span class="divider-text">Nos coordonnées directes</span>
+        <span class="divider-line"></span>
+      </div>
+      <app-contact-info></app-contact-info>
+    </aside>
+  </div>
+</section>

@@ -15,7 +15,7 @@
   --color-border: #e3e1d8;
   --color-focus: #1b5e2b;
 
-  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --font-brand: 'Brush Script MT', 'Segoe Script', 'URW Chancery L', cursive;
 }
 
@@ -36,6 +36,8 @@ body {
   background: var(--color-white);
   line-height: 1.5;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 h1,
@@ -48,3 +50,4 @@ h2:not(.footer__title) {
 img {
   max-width: 100%;
 }
+
